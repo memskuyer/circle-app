@@ -1,6 +1,5 @@
 import RegisterForm from '@/features/auth/components/register-form';
 import { Flex } from '@chakra-ui/react';
-import React from 'react';
 
 const RegisterPage = () => {
   return (

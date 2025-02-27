@@ -1,6 +1,5 @@
 import ResetPassword from '@/features/auth/components/reset-password';
 import { Flex } from '@chakra-ui/react';
-import React from 'react';
 
 const ResetPasswordPage = () => {
   return (

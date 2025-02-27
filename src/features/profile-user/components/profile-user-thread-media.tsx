@@ -1,13 +1,12 @@
 import { ThreadEntity } from '@/entities/thread.entities';
 import {
   Box,
+  Link as ChakraLink,
   Grid,
   GridItem,
-  Link as ChakraLink,
   Image,
   Text,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 type UserMedia = {
