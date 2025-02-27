@@ -11,8 +11,8 @@ const ProfileCard = () => {
     return <LoadingSkeleton />;
   }
 
-  const followings = profile.followings.length || 0;
-  const followers = profile.followers.length || 0;
+  const followings = profile.followings.length || '0';
+  const followers = profile.followers.length || '0';
   return (
     <Box>
       <Box my={4} pos="relative">
