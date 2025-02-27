@@ -114,8 +114,10 @@ const FormPost = () => {
       <DialogRoot>
         <Flex gap={4} align={'center'}>
           <Avatar
-            name={user.profile.fullName}
-            src={user.profile.avatarUrl || undefined}
+            src={
+              user.profile.avatarUrl ||
+              `https://api.dicebear.com/9.x/avataaars/svg?seed=${user.profile.fullName}`
+            }
           />
           <DialogTrigger asChild>
             <Textarea

@@ -15,8 +15,10 @@ const CardPostContent = ({ postData }: CardDetailPost) => {
     <Box mt={4} borderBottom={'1px solid'} borderColor={'gray'}>
       <Flex gap={4} mb={2}>
         <Avatar
-          name={postData.user?.profile?.fullName}
-          src={postData.user?.profile?.avatarUrl || ''}
+          src={
+            postData.user?.profile?.avatarUrl ||
+            `https://api.dicebear.com/9.x/avataaars/svg?seed=${postData.user?.profile?.fullName}`
+          }
         />
         <Flex direction={'column'}>
           <Text>{postData.user?.profile?.fullName}</Text>
