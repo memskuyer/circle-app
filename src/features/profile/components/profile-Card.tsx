@@ -11,8 +11,6 @@ const ProfileCard = () => {
     return <LoadingSkeleton />;
   }
 
-  const followings = profile.followings.length || '0';
-  const followers = profile.followers.length || '0';
   return (
     <Box>
       <Box my={4} pos="relative">
@@ -57,11 +55,11 @@ const ProfileCard = () => {
         <Text>{profile.profile.bio || 'no bio'}</Text>
         <Flex my={2} gap={4}>
           <Flex gap={2} alignItems="center">
-            <Text>{followings}</Text>
+            <Text>{profile.followingCount}</Text>
             <Text color="gray">Following</Text>
           </Flex>
           <Flex gap={2} alignItems="center">
-            {followers}
+            {profile.followerCount}
             <Text color="gray">Followers</Text>
           </Flex>
         </Flex>

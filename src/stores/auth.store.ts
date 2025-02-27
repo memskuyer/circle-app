@@ -2,12 +2,11 @@ import { ProfileEntity } from '@/entities/profile.entities';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { UserEntity } from '../entities/user.entities';
-import { FollowEntity } from '@/entities/follow.entities';
 
 type UserProfile = UserEntity & {
   profile: ProfileEntity;
-  followers: FollowEntity[];
-  followings: FollowEntity[];
+  followerCount: number;
+  followingCount: number;
 };
 
 type useAuthStore = {
