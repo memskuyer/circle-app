@@ -57,11 +57,11 @@ const ProfileCard = () => {
         <Text>{profile.profile.bio || 'no bio'}</Text>
         <Flex my={2} gap={4}>
           <Flex gap={2} alignItems="center">
-            <Text>{followings || ''}</Text>
+            <Text>{followings}</Text>
             <Text color="gray">Following</Text>
           </Flex>
           <Flex gap={2} alignItems="center">
-            {followers || ''}
+            {followers}
             <Text color="gray">Followers</Text>
           </Flex>
         </Flex>
