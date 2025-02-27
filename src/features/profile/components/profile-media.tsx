@@ -5,6 +5,7 @@ import {
   Grid,
   GridItem,
   Image,
+  Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
@@ -13,6 +14,11 @@ type ThreadUserImage = {
 };
 
 const ProfileMedia = ({ data }: ThreadUserImage) => {
+  const filteredImage = data?.filter((data) => data.images);
+  if (filteredImage?.length == 0) {
+    return <Text>Thread image not found</Text>;
+  }
+
   return (
     <Box mt={4}>
       <Grid templateColumns="repeat(3, 1fr)" gap="3">

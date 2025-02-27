@@ -5,6 +5,7 @@ import ProfileEditProfile from './profile-edit-profile';
 
 const ProfileCard = () => {
   const profile = useAuthStore((state) => state.user);
+  console.log(profile);
 
   return (
     <Box>
@@ -50,11 +51,13 @@ const ProfileCard = () => {
         <Text>{profile.profile.bio || 'no bio'}</Text>
         <Flex my={2} gap={4}>
           <Flex gap={2} alignItems="center">
-            <Text>321</Text>
+            <Text>
+              {profile.followings.length == 0 ? '0' : profile.followings.length}
+            </Text>
             <Text color="gray">Following</Text>
           </Flex>
           <Flex gap={2} alignItems="center">
-            <Text>321</Text>
+            {profile.followers.length == 0 ? '0' : profile.followers.length}
             <Text color="gray">Followers</Text>
           </Flex>
         </Flex>

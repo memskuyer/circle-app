@@ -9,6 +9,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 type ProfileUser = UserEntity & {
   followers?: FollowEntity[];
+  followings?: FollowEntity[];
 };
 
 type UserData = {
@@ -51,6 +52,8 @@ const ProfileUserCard = ({ field }: UserData) => {
   const handleFollow = async (data: FollowUnfollowSchemaDTO) => {
     await mutateAsync(data);
   };
+
+  console.log(field);
 
   return (
     <Box>
@@ -102,11 +105,11 @@ const ProfileUserCard = ({ field }: UserData) => {
         <Text>{'no bio'}</Text>
         <Flex my={2} gap={4}>
           <Flex gap={2} alignItems="center">
-            <Text>321</Text>
+            <Text>{field?.followings?.length}</Text>
             <Text color="gray">Following</Text>
           </Flex>
           <Flex gap={2} alignItems="center">
-            <Text>321</Text>
+            <Text>{field?.followers?.length}</Text>
             <Text color="gray">Followers</Text>
           </Flex>
         </Flex>

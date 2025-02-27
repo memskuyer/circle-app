@@ -58,9 +58,13 @@ const ProfileUserComponents = () => {
       ))}
       {loadingThread && <SkeletonCard />}
       {buttonChose == 'AllPost' ? (
-        thread?.map((field) => (
-          <ProfileUserThread key={field.id} data={field} />
-        ))
+        thread?.length == 0 ? (
+          'has no posts'
+        ) : (
+          thread?.map((field) => (
+            <ProfileUserThread key={field.id} data={field} />
+          ))
+        )
       ) : (
         <ProfileUserThreadMedia data={thread} />
       )}

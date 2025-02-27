@@ -13,7 +13,6 @@ import { toaster } from './ui/toaster';
 const Layout = () => {
   const { user, setUser, logout } = useAuthStore();
 
-  // const token = Cookies.get('token');
   const token = useMemo(() => Cookies.get('token'), []);
 
   const { isPending, isFetched } = useQuery({
@@ -44,6 +43,7 @@ const Layout = () => {
       }
     },
   });
+
   const { pathname } = useLocation();
 
   if (isPending) return <LoadingSkeleton />;

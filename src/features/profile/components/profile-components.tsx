@@ -48,7 +48,11 @@ const ProfileComponents = () => {
       ))}
       {isLoading && <SkeletonCard />}
       {buttonChose == 'AllPost' ? (
-        <>{data?.map((field) => <ProfilePost key={field.id} data={field} />)}</>
+        <>
+          {data?.length === 0
+            ? 'has no posts'
+            : data?.map((field) => <ProfilePost key={field.id} data={field} />)}
+        </>
       ) : (
         <>
           <ProfileMedia data={data} />
