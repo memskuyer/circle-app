@@ -1,4 +1,4 @@
-import Home from '@/assets/home.svg';
+import Home from '@/assets/Home.svg';
 import HomeOutline from '@/assets/HomeOutline.svg';
 import UserSearch from '@/assets/UserSearch.svg';
 import UserSearchOutline from '@/assets/UserSearchOutline.svg';
