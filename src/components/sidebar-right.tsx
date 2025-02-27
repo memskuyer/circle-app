@@ -4,23 +4,10 @@ import { SearchUser } from '@/features/search/types/search-user-types';
 import { api } from '@/hooks/api';
 import ButtonFollow from '@/hooks/button/button-follow';
 import { useAuthStore } from '@/stores/auth.store';
-import {
-  Box,
-  Button,
-  Flex,
-  HStack,
-  Image,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Flex, HStack, Image, Stack, Text } from '@chakra-ui/react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
-import {
-  Navigate,
-  useLocation,
-  useNavigate,
-  useParams,
-} from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const SidebarRight = () => {
   //

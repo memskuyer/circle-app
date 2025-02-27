@@ -1,16 +1,15 @@
+import ReplyOutline from '@/assets/ReplyOutline.svg';
 import { Avatar } from '@/components/ui/avatar';
 import { ThreadEntity } from '@/entities/thread.entities';
 import ButtonLike from '@/hooks/button/button-like';
-import ReplyOutline from '@/assets/ReplyOutline.svg';
 import {
   Box,
-  Flex,
-  Link as ChakraLink,
-  Text,
-  Image,
   Button,
+  Link as ChakraLink,
+  Flex,
+  Image,
+  Text,
 } from '@chakra-ui/react';
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 type UserThread = {
