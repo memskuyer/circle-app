@@ -88,7 +88,7 @@ const ForgotPassword = (props: BoxProps) => {
           </ChakraLink>
         </Flex>
         <Button w={'100%'} type="submit" bg={'#04A51E'} color={'white'}>
-          Login
+          Forgot Password
         </Button>
       </form>
       <Text as={'span'}>

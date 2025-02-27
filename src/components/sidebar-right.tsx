@@ -50,7 +50,7 @@ const BoxProfile = () => {
   const user = useAuthStore((state) => state.user);
 
   if (!user || !user.profile) {
-    window.location.reload();
+    // window.location.reload();
     return <Text>Loading....</Text>;
   }
 
