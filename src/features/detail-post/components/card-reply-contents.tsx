@@ -22,21 +22,17 @@ const CardReplyContents = () => {
           <>
             <Flex gap={2}>
               <Avatar
-                name={reply.user?.username}
-                src={reply.user?.profile?.avatarUrl || ''}
+                src={
+                  reply.user?.profile?.avatarUrl ||
+                  `https://api.dicebear.com/9.x/avataaars/svg?seed=${reply.user?.profile?.fullName}`
+                }
               />
               <Flex direction={'column'}>
                 <Flex gap={2}>
                   <Text>{reply.user?.profile?.fullName}</Text>
                   <Text color="gray">@{reply.user?.username}</Text>
-                  {/* <Text color="gray">{replyData.createdAt.getHours()}h</Text> */}
                 </Flex>
                 <Text>{reply.content}</Text>
-                {/* <Flex my={2} gap={4}>
-                  <Text display="flex" alignItems="center" gap={2}>
-                    <FaHeart /> {reply.thread?.likesCount}
-                  </Text>
-                </Flex> */}
               </Flex>
             </Flex>
           </>
