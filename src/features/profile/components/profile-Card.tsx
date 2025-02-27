@@ -5,7 +5,6 @@ import ProfileEditProfile from './profile-edit-profile';
 
 const ProfileCard = () => {
   const profile = useAuthStore((state) => state.user);
-  console.log(profile);
 
   return (
     <Box>
