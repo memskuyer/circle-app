@@ -2,10 +2,17 @@ import { Avatar } from '@/components/ui/avatar';
 import { useAuthStore } from '@/stores/auth.store';
 import { Box, Flex, Image, Text } from '@chakra-ui/react';
 import ProfileEditProfile from './profile-edit-profile';
+import LoadingSkeleton from '@/features/dashboard/skeleton/loading.skeleton';
 
 const ProfileCard = () => {
   const profile = useAuthStore((state) => state.user);
 
+  if (!profile || !profile.profile) {
+    return <LoadingSkeleton />;
+  }
+
+  const followings = profile.followings.length || 0;
+  const followers = profile.followers.length || 0;
   return (
     <Box>
       <Box my={4} pos="relative">
@@ -50,13 +57,11 @@ const ProfileCard = () => {
         <Text>{profile.profile.bio || 'no bio'}</Text>
         <Flex my={2} gap={4}>
           <Flex gap={2} alignItems="center">
-            <Text>
-              {profile.followings.length == 0 ? '0' : profile.followings.length}
-            </Text>
+            <Text>{followings || ''}</Text>
             <Text color="gray">Following</Text>
           </Flex>
           <Flex gap={2} alignItems="center">
-            {profile.followers.length == 0 ? '0' : profile.followers.length}
+            {followers || ''}
             <Text color="gray">Followers</Text>
           </Flex>
         </Flex>
