@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import { useMemo } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import SidebarLeft from './sidebar-left';
+import SidebarResponsive from './sidebar-responsive';
 import SidebarRight from './sidebar-right';
 import { toaster } from './ui/toaster';
 const Layout = () => {
@@ -50,30 +51,35 @@ const Layout = () => {
   if (isFetched) {
     if (!user.username) return <Navigate to={'/login'} />;
     return (
-      <Grid templateColumns="repeat(5, 1fr)">
-        <GridItem
-          hidden={pathname.includes('detail-image') ? true : false}
-          colSpan={1}
-          p={'40px'}
-        >
-          <SidebarLeft />
-        </GridItem>
-        <GridItem
-          colSpan={pathname.includes('detail-image') ? 5 : 3}
-          minH={'100vh'}
-          borderX={'1px solid'}
-          borderColor={'gray'}
-          p={'40px 20px'}
-        >
-          <Outlet />
-        </GridItem>
-        <GridItem
-          hidden={pathname.includes('detail-image') ? true : false}
-          colSpan={1}
-        >
-          <SidebarRight />
-        </GridItem>
-      </Grid>
+      <>
+        <Grid templateColumns="repeat(5, 1fr)">
+          <GridItem
+            hidden={pathname.includes('detail-image') ? true : false}
+            colSpan={{ base: 0, md: 1 }}
+            p={'40px'}
+            hideBelow="md"
+          >
+            <SidebarLeft />
+          </GridItem>
+          <GridItem
+            colSpan={{ base: 5, md: pathname.includes('detail-image') ? 5 : 3 }}
+            minH={'100vh'}
+            borderX={'1px solid'}
+            borderColor={'gray'}
+            p={'40px 20px'}
+          >
+            <Outlet />
+          </GridItem>
+          <GridItem
+            hidden={pathname.includes('detail-image') ? true : false}
+            colSpan={1}
+            hideBelow="md"
+          >
+            <SidebarRight />
+          </GridItem>
+        </Grid>
+        <SidebarResponsive />
+      </>
     );
   }
 };
