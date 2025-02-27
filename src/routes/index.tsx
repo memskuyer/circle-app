@@ -7,6 +7,7 @@ import Follow from '@/pages/follow';
 import ForgotpasswordPage from '@/pages/forgot-password-pages';
 import HomePage from '@/pages/home';
 import LoginPage from '@/pages/login-Page';
+import NotFound from '@/pages/not-found';
 import Profile from '@/pages/profile';
 import ProfileUser from '@/pages/profile-user';
 import RegisterPage from '@/pages/register-page';
@@ -74,6 +75,10 @@ const router = createBrowserRouter(
     {
       path: '/test',
       element: <LoadingSkeleton />,
+    },
+    {
+      path: '*',
+      element: <NotFound />,
     },
   ],
   {
