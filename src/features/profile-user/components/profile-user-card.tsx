@@ -53,8 +53,6 @@ const ProfileUserCard = ({ field }: UserData) => {
     await mutateAsync(data);
   };
 
-  console.log(field);
-
   return (
     <Box>
       <Box my={4} pos="relative">

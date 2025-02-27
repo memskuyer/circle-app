@@ -26,6 +26,9 @@ const ButtonFollow = ({ followData }: { followData: FollowEntity }) => {
       queryClient.invalidateQueries({
         queryKey: ['follows'],
       });
+      queryClient.invalidateQueries({
+        queryKey: ['user-profile'],
+      });
     },
   });
 
