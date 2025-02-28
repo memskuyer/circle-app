@@ -41,7 +41,6 @@ const CardPostContent = ({ postDatas }: CardPostProps) => {
     <Box borderY="1px solid" borderColor={'gray'}>
       <Flex gap={4} p={4}>
         <Avatar
-          name={postDatas.user?.profile?.fullName}
           src={
             postDatas.user?.profile?.avatarUrl ||
             `'https://api.dicebear.com/9.x/glass/svg?seed=${postDatas.user?.profile?.fullName}`
