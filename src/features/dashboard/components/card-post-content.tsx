@@ -13,6 +13,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
+import SavedButton from '../button/saved-button';
 
 interface CardPostProps extends BoxProps {
   postDatas: ThreadEntity;
@@ -43,7 +44,7 @@ const CardPostContent = ({ postDatas }: CardPostProps) => {
         <Avatar
           src={
             postDatas.user?.profile?.avatarUrl ||
-            `'https://api.dicebear.com/9.x/glass/svg?seed=${postDatas.user?.profile?.fullName}`
+            `https://api.dicebear.com/9.x/glass/svg?seed=${postDatas.user?.profile?.fullName}`
           }
         />
         <Box>
@@ -73,18 +74,25 @@ const CardPostContent = ({ postDatas }: CardPostProps) => {
           )}
         </Box>
       </Flex>
-      <Flex ml={10}>
-        <ButtonLike postDatas={postDatas} />
-        <Button
-          onClick={buttonReplies}
-          variant={'ghost'}
-          display={'flex'}
-          gap={'4px'}
-        >
-          <Image src={ReplyOutline} width={'20px'} />
-          <Text>{postDatas.repliesCount}</Text>
-          <Text>Replies</Text>
-        </Button>
+      <Flex ml={10} justify={'space-between'}>
+        <Flex>
+          <ButtonLike postDatas={postDatas} />
+          <Button
+            onClick={buttonReplies}
+            variant={'ghost'}
+            display={'flex'}
+            gap={'4px'}
+          >
+            <Image src={ReplyOutline} width={'20px'} />
+            <Text>{postDatas.repliesCount}</Text>
+            <Text>Replies</Text>
+          </Button>
+        </Flex>
+        {postDatas.images ? (
+          <SavedButton threadId={postDatas.id} isSaved={postDatas.isSaved} />
+        ) : (
+          ''
+        )}
       </Flex>
     </Box>
   );

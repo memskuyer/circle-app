@@ -23,8 +23,14 @@ const SidebarRight = () => {
   return (
     <Box p={'40px 20px'}>
       {pathname != '/profile' && <BoxProfile />}
-
-      <Box bg="white/10" p="2" borderRadius="10px" my="20px">
+      <Box
+        bg={{ _dark: 'white/10', base: 'black/30' }}
+        _dark={{ shadow: '5px 5px 15px rgba(0, 255, 255, 0.5)' }}
+        _light={{ shadow: '5px 5px 15px rgba(30, 43, 43, 0.5)' }}
+        p="2"
+        borderRadius="10px"
+        my="20px"
+      >
         <Text textStyle={'xl'}>Suggested for you</Text>
 
         {isLoading ? (
@@ -55,7 +61,13 @@ const BoxProfile = () => {
   }
 
   return (
-    <Box bg={'white/10'} p={2} rounded={'xl'}>
+    <Box
+      bg={{ _dark: 'white/10', base: 'black/30' }}
+      _dark={{ shadow: '5px 5px 15px rgba(0, 255, 255, 0.5)' }}
+      _light={{ shadow: '5px 5px 15px rgba(30, 43, 43, 0.5)' }}
+      p={2}
+      rounded={'xl'}
+    >
       <Text textStyle={'2xl'} my={2}>
         My Profile
       </Text>
@@ -97,11 +109,11 @@ const BoxProfile = () => {
       <Text textStyle="md">{user.profile.bio}</Text>
       <Flex align={'center'} gap={2}>
         <Flex gap={1}>
-          <Text>291</Text>
+          <Text>{user.followingCount}</Text>
           <Text color={'white/60'}>Following</Text>
         </Flex>
         <Flex gap={1}>
-          <Text>291</Text>
+          <Text>{user.followerCount}</Text>
           <Text color={'white/60'}>Followers</Text>
         </Flex>
       </Flex>
@@ -146,8 +158,8 @@ const SuggestedCard = ({ data }: DataUser) => {
             }
           />
           <Stack gap="0" onClick={handleUser} cursor={'pointer'}>
-            <Text fontSize={'12px'}>{data.profile.fullName}</Text>
-            <Text color="fg.muted" fontSize={'12px'}>
+            <Text fontSize={'17px'}>{data.profile.fullName}</Text>
+            <Text color="fg.muted" fontSize={'14px'}>
               @{data.username}
             </Text>
           </Stack>

@@ -11,6 +11,7 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import ButtonChose from '../button/button-chose';
 
 type ThreadUser = {
   data: ThreadEntity;
@@ -20,13 +21,13 @@ const ProfilePost = ({ data }: ThreadUser) => {
   return (
     <>
       <Box borderY="1px solid" borderColor={'gray'}>
-        <Flex gap={4} p={4}>
-          <Avatar
-            name={data.user?.profile?.fullName}
-            src={data.user?.profile?.avatarUrl || ``}
-          />
+        <Flex gap={4} p={4} justify="space-between">
           <Box>
             <Flex gap={2}>
+              <Avatar
+                name={data.user?.profile?.fullName}
+                src={data.user?.profile?.avatarUrl || ``}
+              />
               <Text>{data.user?.profile?.fullName}</Text>
               <Text color={'gray'}>@{data.user?.username}</Text>
               <Text color={'gray'}>•</Text>
@@ -44,6 +45,9 @@ const ProfilePost = ({ data }: ThreadUser) => {
                 <Text>{data.content}</Text>
               </Link>
             )}
+          </Box>
+          <Box>
+            <ButtonChose data={data} />
           </Box>
         </Flex>
         <Flex ml={10}>

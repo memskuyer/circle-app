@@ -19,13 +19,16 @@ const CardDetailImage = () => {
   if (isPending) {
     return <LoadingSkeleton />;
   }
+  const handleBack = () => {
+    navigate('/');
+  };
 
   return (
     <Box h={'100vh'}>
       <Grid templateColumns="repeat(6, 1fr)" gap="2">
         <GridItem minH={'100vh'} colSpan={4}>
           <Button
-            onClick={() => navigate(-1)}
+            onClick={handleBack}
             pos={'absolute'}
             top={5}
             left={10}

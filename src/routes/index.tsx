@@ -2,6 +2,7 @@ import Layout from '@/components/layout';
 import AuthLayout from '@/components/layout/auth-layout';
 import LoadingSkeleton from '@/features/dashboard/skeleton/loading.skeleton';
 import CardDetailImage from '@/features/detail-post/components/card-detail-image';
+import SavePost from '@/features/setting/components/save-post';
 import DetailPosting from '@/pages/detail-posting';
 import Follow from '@/pages/follow';
 import ForgotpasswordPage from '@/pages/forgot-password-pages';
@@ -13,6 +14,7 @@ import ProfileUser from '@/pages/profile-user';
 import RegisterPage from '@/pages/register-page';
 import ResetPasswordPage from '@/pages/reset-password-page';
 import Search from '@/pages/search';
+import Setting from '@/pages/setting';
 import { createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter(
@@ -36,7 +38,14 @@ const router = createBrowserRouter(
           path: '/follows',
           element: <Follow />,
         },
-
+        {
+          path: '/setting',
+          element: <Setting />,
+        },
+        {
+          path: '/save-post',
+          element: <SavePost />,
+        },
         {
           path: '/detail-post/:id',
           element: <DetailPosting />,

@@ -1,29 +1,27 @@
-import { UserEntity } from '@/entities/user.entities';
 import CardSkeleton from '@/features/search/skeleton/card-skeleton';
 import { api } from '@/hooks/api';
-import { Box, Button, Flex } from '@chakra-ui/react';
+import { Box, Button, Flex, Text } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { lazy, Suspense, useState } from 'react';
+import { Follows } from '../types/follow-types';
 
 const CardUser = lazy(() => import('@/components/card-user'));
-
-type Follows = UserEntity & {
-  isFollow: boolean;
-};
 
 const FollowsComponents = () => {
   const [activeFilter, setActiveFilter] = useState<string>('followers');
 
-  const { data } = useQuery<{ message: string }, Error, Follows[]>({
+  const { data, isLoading } = useQuery<{ message: string }, Error, Follows>({
     queryKey: ['follows'],
     queryFn: async () => {
-      const response = await api.get('/users/all');
+      const response = await api.get('/follow');
       return response.data.data;
     },
   });
 
   const filteredData =
-    activeFilter === 'followers' ? data : data?.filter((fill) => fill.isFollow);
+    activeFilter === 'followers'
+      ? (data?.follower ?? [])
+      : (data?.following ?? []);
 
   return (
     <Box>
@@ -34,7 +32,7 @@ const FollowsComponents = () => {
             key={i}
             w={'50%'}
             bg={'none'}
-            color={'white'}
+            color={{ base: 'black', _dark: 'white' }}
             borderBottom={activeFilter === filter ? '1px solid' : ''}
             borderBottomColor={activeFilter === filter ? 'brand' : ''}
           >
@@ -43,11 +41,19 @@ const FollowsComponents = () => {
         ))}
       </Flex>
 
-      {filteredData?.map((datas) => (
-        <Suspense key={datas.id} fallback={<CardSkeleton />}>
-          <CardUser data={datas} />
-        </Suspense>
-      ))}
+      {isLoading ? (
+        <CardSkeleton />
+      ) : filteredData.length == 0 ? (
+        <Text textAlign="center" color="gray.400">
+          No Data
+        </Text>
+      ) : (
+        filteredData?.map((datas) => (
+          <Suspense key={datas.id} fallback={<CardSkeleton />}>
+            <CardUser data={datas} />
+          </Suspense>
+        ))
+      )}
     </Box>
   );
 };

@@ -16,6 +16,9 @@ const config = defineConfig({
         outline: {
           value: '#3F3F3F',
         },
+        shadX: {
+          value: '0 20px 25px rgba(0, 255, 255, 0.5)',
+        },
       },
     },
   },

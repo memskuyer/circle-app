@@ -39,7 +39,7 @@ const ProfileComponents = () => {
           key={i}
           w={'50%'}
           bg={'none'}
-          color={'white'}
+          color={{ base: 'black', _dark: 'white' }}
           borderBottom={buttonChose === button ? '1px solid' : ''}
           borderBottomColor={buttonChose === button ? 'brand' : ''}
         >

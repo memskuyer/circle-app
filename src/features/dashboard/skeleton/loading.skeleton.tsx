@@ -6,8 +6,8 @@ const LoadingSkeleton = () => {
     <Box h={'100vh'}>
       <Flex h={'100vh'} justifyContent={'center'} align={'center'}>
         <VStack colorPalette="teal">
-          <Spinner size={'xl'} color="cyan" />
-          <Text textStyle={'5xl'} color="cyan">
+          <Spinner size={'xl'} color="brand" />
+          <Text textStyle={'5xl'} color="brand">
             Loading to Circle App
           </Text>
         </VStack>

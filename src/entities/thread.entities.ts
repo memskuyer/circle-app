@@ -12,6 +12,7 @@ export interface ThreadEntity {
   user?: UserEntity;
   likesCount: number;
   isLiked: boolean;
+  isSaved: boolean;
   likes?: LikeEntity[];
   replies?: ReplyEntity[];
   repliesCount?: number;

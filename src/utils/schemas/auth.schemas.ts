@@ -34,3 +34,13 @@ export const ForgotPasswordSchema = z.object({
 });
 
 export type ForgotPasswordSchemaDTO = z.infer<typeof ForgotPasswordSchema>;
+
+export const ChangePasswordSchema = z.object({
+  oldPassword: z.string().min(8, { message: 'Password minimal 8 karakter' }),
+  newPassword: z.string().min(8, { message: 'Password minimal 8 karakter' }),
+  confirmPassword: z
+    .string()
+    .min(8, { message: 'Password minimal 8 karakter' }),
+});
+
+export type ChangePasswordSchemaDTO = z.infer<typeof ChangePasswordSchema>;

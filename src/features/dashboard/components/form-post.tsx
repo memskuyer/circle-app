@@ -33,8 +33,10 @@ import { useForm } from 'react-hook-form';
 type ThreadResponse = {
   message: string;
 };
+
 const FormPost = () => {
   const { user } = useAuthStore();
+
   const {
     register,
     handleSubmit,
@@ -75,8 +77,8 @@ const FormPost = () => {
         });
       }
     },
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({
+    onSuccess: async (data) => {
+      await queryClient.invalidateQueries({
         queryKey: ['threads'],
       });
       reset({
@@ -97,7 +99,6 @@ const FormPost = () => {
       const blob = URL.createObjectURL(file);
       setPreview(blob);
 
-      // Membersihkan URL blob saat berganti file atau saat komponen unmount
       return () => URL.revokeObjectURL(blob);
     } else {
       setPreview(null); // Reset preview jika tidak ada gambar
@@ -131,7 +132,7 @@ const FormPost = () => {
           <Button bg={'transparent'} disabled>
             <Image src={LogoImage} w={10} />
           </Button>
-          <Button rounded={'25px'} bg={'brand'} disabled>
+          <Button rounded={'25px'} bg={'brand'} color={'black'} disabled>
             {isPending ? 'Loading...' : 'Post'}
           </Button>
         </Flex>
@@ -139,7 +140,12 @@ const FormPost = () => {
         <DialogContent p={'5px 0'}>
           <DialogBody pb="4">
             <Flex gap={2}>
-              <Avatar name="Paste Prosmana" />
+              <Avatar
+                src={
+                  user.profile.avatarUrl ||
+                  `https://api.dicebear.com/9.x/avataaars/svg?seed=${user.profile.fullName}`
+                }
+              />
               <Field.Root invalid={!!errors.content?.message}>
                 <Textarea
                   {...register('content')}
@@ -179,6 +185,7 @@ const FormPost = () => {
                 type="submit"
                 rounded={'25px'}
                 bg={'brand'}
+                color={'black'}
                 disabled={isPending ? true : false}
               >
                 {isPending ? 'Loading...' : 'Post'}

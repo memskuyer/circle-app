@@ -6,7 +6,7 @@ import { FollowEntity } from '@/entities/follow.entities';
 
 const ButtonFollow = ({ followData }: { followData: FollowEntity }) => {
   const queryClient = useQueryClient();
-  const { mutateAsync } = useMutation<
+  const { mutateAsync, isPending } = useMutation<
     { message: string },
     Error,
     FollowUnfollowSchemaDTO
@@ -44,9 +44,15 @@ const ButtonFollow = ({ followData }: { followData: FollowEntity }) => {
         bg="transparent"
         border="1px solid"
         h="50%"
-        color="white"
+        color={{ base: 'black', _dark: 'white' }}
       >
-        {!followData.isFollow ? 'Follow' : 'Unfollow'}
+        {isPending
+          ? 'Loading...'
+          : followData.isFollow && followData?.isFollower
+            ? 'Unfollow'
+            : followData?.isFollower
+              ? 'Follback'
+              : 'Follow'}
       </Button>
     </>
   );

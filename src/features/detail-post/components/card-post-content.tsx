@@ -13,17 +13,21 @@ interface CardDetailPost {
 const CardPostContent = ({ postData }: CardDetailPost) => {
   return (
     <Box mt={4} borderBottom={'1px solid'} borderColor={'gray'}>
-      <Flex gap={4} mb={2}>
-        <Avatar
-          src={
-            postData.user?.profile?.avatarUrl ||
-            `https://api.dicebear.com/9.x/avataaars/svg?seed=${postData.user?.profile?.fullName}`
-          }
-        />
-        <Flex direction={'column'}>
-          <Text>{postData.user?.profile?.fullName}</Text>
-          <Text>@{postData.user?.username}</Text>
-        </Flex>
+      <Flex gap={4} p={4} justify={'space-between'}>
+        <Box>
+          <Flex gap={2}>
+            <Avatar
+              src={
+                postData.user?.profile?.avatarUrl ||
+                `https://api.dicebear.com/9.x/avataaars/svg?seed=${postData.user?.profile?.fullName}`
+              }
+            />
+            <Flex direction={'column'}>
+              <Text>{postData.user?.profile?.fullName}</Text>
+              <Text>@{postData.user?.username}</Text>
+            </Flex>
+          </Flex>
+        </Box>
       </Flex>
       <Text>{postData.content}</Text>
       <Flex gap="4">
